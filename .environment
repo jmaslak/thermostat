@@ -1,0 +1,4 @@
+export MOJO_ENV=DEVELOPMENT
+export PORT=3002
+export BASE_URL=
+export OPTIONS="--listen http://[::]:3002/"
