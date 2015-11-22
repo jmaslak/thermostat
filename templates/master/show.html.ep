@@ -1,0 +1,47 @@
+% layout 'default';
+% title 'Temperature';
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      &nbsp;
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="text-large text-right visible-xs">
+        Current:
+      </div>
+      <div class="text-x-large text-right hidden-xs">
+        Current:
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="text-large visible-xs">
+        <%= $temp %>&deg;&nbsp;F
+      </div>
+      <div class="text-x-large hidden-xs">
+        <%= $temp %>&deg;&nbsp;F
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="text-large text-right visible-xs">
+        Set:
+      </div>
+      <div class="text-x-large text-right hidden-xs">
+        Set Point:
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="text-large visible-xs">
+        <%= $temp %>&deg;&nbsp;F
+      </div>
+      <div class="text-x-large hidden-xs">
+        <%= $temp %>&deg;&nbsp;F
+      </div>
+    </div>
+  </div>
+</div>
+
+%# vim: ft=html

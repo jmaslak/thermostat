@@ -1,5 +1,68 @@
+% my $nav = $self->stash('nav') // ();  # Navigation Breadcrumbs
+% my $js  = $self->stash('js')  // ();  # Extra .js files
+% my $script = $self->stash('script');
 <!DOCTYPE html>
-<html>
-  <head><title><%= title %></title></head>
-  <body><%= content %></body>
+<html language="en">
+  <head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=2"
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/standard.css?ver=2">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/sorttable.js"></script>
+% foreach my $j (@$js) {
+    <script type="text/javascript" src="<%= $j %>"></script>
+% }
+% if (defined($script)) {
+%   foreach my $s (@$script) {
+    <script><%== $s %></script>
+%   }
+% }
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid title text-thin text-right text-uppercase">
+        <div class="navbar-header visible-md visible-lg">
+          <h1>Thermostat Control</h1>
+        </div>
+        <div class="navbar-header navbar-right">
+          <h1><%= title %></h1>
+        </div>
+      </div>
+      <div class="container-fluid navbar-bg">
+        <div class="row">
+          <div class="col-md-12">
+% if (scalar(@$nav) > 0) {
+            <a href="/"><span class="fa fa-home" aria-hidden="true"></span></a>
+            <a href="/">(Home)</a>
+%   my $last = pop @$nav;
+%   foreach my $item (@$nav) {
+            <span class="fa fa-caret-right navbar-symbol" aria-hidden="true"></span>
+            <a href="<%== $item->[1] %>"><%= $item->[0] %></a>
+%   }
+            <span class="fa fa-caret-right navbar-symbol" aria-hidden="true"></span>
+            <%= $last->[0] %>
+% } else {
+            <span class="fa fa-home" aria-hidden="true"></span>
+            (Home)
+% }
+          </div>
+        </div>
+      </div>
+    </nav>
+<%== content %>
+<div class="row">
+    <nav class="navbar navbar-default footer navbar-fixed-bottom">
+      <div class="containerfs">
+        <div class="navbar-header navbar-center">
+          This page is maintained by Joel Maslak /
+          <a href="mailto:jmaslak@antelope.net">jmaslak@antelope.net</a>
+        </div>
+      </div>
+    </nav>
+  </body>
+</div>
 </html>

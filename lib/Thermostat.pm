@@ -5,7 +5,7 @@
 # All Rights Reserved - See License
 #
 
-use v5.22;
+use v5.14;
 
 package Thermostat;
 
@@ -16,6 +16,8 @@ use autodie;
 use Carp;
 
 use Mojo::Base 'Mojolicious';
+
+use Mojolicious::Plugin::Config;
 
 our $CONFIG;
 
@@ -42,11 +44,11 @@ sub startup {
     # Documentation browser under "/perldoc"
     $self->plugin('PODRenderer');
 
+    # Plugins
+    $self->plugin('Thermostat::Controller');
+
     # Router
     my $r = $self->routes;
-
-    # Normal route to controller
-    $r->get('/')->to('example#welcome');
 
     # Allow caching of static stuff
     $self->hook(after_static => sub {
