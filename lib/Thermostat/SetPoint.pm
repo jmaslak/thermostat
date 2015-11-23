@@ -45,6 +45,21 @@ sub get_setpoint {
     return $temp;
 }
 
+sub set_setpoint {
+    if ($#_ != 1) { confess 'invalid call'; }
+    my $self = shift;
+    my ($temp) = @_;
+
+    my $dbh = DBI->connect("dbi:SQLite:dbname=".$self->database, '', '')
+        or die(DBI->errstr);
+    my $sth = $dbh->prepare('
+        UPDATE  config
+           SET  set_point=?;
+    ') or die ($dbh->errstr);
+
+    $sth->execute($temp) or die($sth->errstr);
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;

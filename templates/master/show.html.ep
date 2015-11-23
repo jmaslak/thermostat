@@ -3,6 +3,13 @@
 <%
   my $current_temp = sprintf "%5.1f", $temp+.05;
   my $set_temp = sprintf "%5.1f", $setpoint+.05;
+
+  my $setpoint_class = '';
+  if ($old_setpoint < $setpoint) {
+    $setpoint_class = 'text-danger';  # Getting hotter
+  } elsif ($old_setpoint > $setpoint) {
+    $setpoint_class = 'text-info';    # Getting cooler
+  }
 %>
 <div class="container">
   <div class="row">
@@ -11,11 +18,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-6">
-      <div class="text-large text-right visible-xs">
+    <div class="col-xs-6 text-right text-muted">
+      <div class="text-large visible-xs">
         Current:
       </div>
-      <div class="text-x-large text-right hidden-xs">
+      <div class="text-x-large hidden-xs">
         Current:
       </div>
     </div>
@@ -29,21 +36,31 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-6">
-      <div class="text-large text-right visible-xs">
+    <div class="col-xs-6 text-right text-muted">
+      <div class="text-large visible-xs">
         Set:
       </div>
-      <div class="text-x-large text-right hidden-xs">
+      <div class="text-x-large hidden-xs">
         Set Point:
       </div>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-6 <%= $setpoint_class %>">
       <div class="text-large visible-xs">
         <%= $set_temp %>&deg;&nbsp;F
       </div>
       <div class="text-x-large hidden-xs">
         <%= $set_temp %>&deg;&nbsp;F
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 text-right">
+      <a href="/?settemp=<%= $temp_setlow %>" class="btn btn-lg btn-info"><%= $temp_setlow %>&deg;&nbsp;F</a>
+      <a href="/?settemp=<%= $set_temp-1 %>" class="btn btn-lg btn-info">Cooler (-1&deg;)</a>
+    </div>
+    <div class="col-xs-6">
+      <a href="/?settemp=<%= $set_temp+1 %>" class="btn btn-lg btn-danger">Hotter (+1&deg;)</a>
+      <a href="/?settemp=<%= $temp_sethigh %>" class="btn btn-lg btn-danger"><%= $temp_sethigh%>&deg;&nbsp;F</a>
     </div>
   </div>
 </div>

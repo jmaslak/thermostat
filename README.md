@@ -9,6 +9,7 @@ Requires Perl Modules:
     - Device::Temperature::TMP102
     - Mojolicious
     - Moose
+    - Regexp::Common
     - YAML
 
 Requires System Utilities:
