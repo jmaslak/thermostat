@@ -40,7 +40,7 @@ if [ "$DB" == "" ] ; then
     DB='data/db.sql'
 fi
 
-if [ \! -f 'data/db.sql' ] ; then
+if [ \! -f "$DB" ] ; then
     cat script/schema*.sql | sqlite3 "$DB"
     if [ $? -ne 0 ] ; then
         echo "Cannot create database $DB" >&2

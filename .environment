@@ -5,5 +5,5 @@ export OPTIONS="--listen http://[::]:3002/"
 export TEMP_SENSOR=/dev/i2c-1
 export PERL=/root/perl5/perlbrew/perls/perl-5.22.0/bin/perl
 export MORBO=/root/perl5/perlbrew/perls/perl-5.22.0/bin/morbo
-export DB=data/db.sql
+export DB=/home/jmaslak/db.sql
 

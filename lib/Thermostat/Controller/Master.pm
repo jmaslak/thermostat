@@ -53,6 +53,7 @@ sub show {
     $self->stash(old_setpoint => $old_setpoint);
     $self->stash(temp_setlow => $CONFIG->{'temp_setlow'});
     $self->stash(temp_sethigh => $CONFIG->{'temp_sethigh'});
+    $self->stash(heat => $SETPOINT->get_heat());
 
     # Render template
     $self->res->headers->cache_control('private, max-age=0, no-cache');
