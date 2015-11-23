@@ -1,5 +1,9 @@
 % layout 'default';
 % title 'Temperature';
+<%
+  my $current_temp = sprintf "%5.1f", $temp+.05;
+  my $set_temp = sprintf "%5.1f", $setpoint+.05;
+%>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -17,10 +21,10 @@
     </div>
     <div class="col-xs-6">
       <div class="text-large visible-xs">
-        <%= $temp %>&deg;&nbsp;F
+        <%= $current_temp %>&deg;&nbsp;F
       </div>
       <div class="text-x-large hidden-xs">
-        <%= $temp %>&deg;&nbsp;F
+        <%= $current_temp %>&deg;&nbsp;F
       </div>
     </div>
   </div>
@@ -35,10 +39,10 @@
     </div>
     <div class="col-xs-6">
       <div class="text-large visible-xs">
-        <%= $temp %>&deg;&nbsp;F
+        <%= $set_temp %>&deg;&nbsp;F
       </div>
       <div class="text-x-large hidden-xs">
-        <%= $temp %>&deg;&nbsp;F
+        <%= $set_temp %>&deg;&nbsp;F
       </div>
     </div>
   </div>

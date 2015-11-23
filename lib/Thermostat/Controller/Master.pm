@@ -18,6 +18,9 @@ use Mojo::Base 'Mojolicious::Controller';
 use Carp;
 
 my @BASENAV = ();
+our $CONFIG;
+our $HARDWARE;
+our $SETPOINT;
 
 # Main status display
 sub show {
@@ -29,7 +32,8 @@ sub show {
     # We aren't going to do anything with parameters yet, but in the
     # future we will validate them here
     
-    $self->stash(temp => 77); # XXX Just use 77 for now.
+    $self->stash(temp => $HARDWARE->current_temp());
+    $self->stash(setpoint => $SETPOINT->get_setpoint());
 
     # Render template
     $self->res->headers->cache_control('private, max-age=0, no-cache');
