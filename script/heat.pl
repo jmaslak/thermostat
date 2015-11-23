@@ -41,7 +41,7 @@ MAIN: {
     Device::BCM2835::gpio_fsel($GPIO, &Device::BCM2835::BCM2835_GPIO_FSEL_OUTP);
     
     while (1) {
-        thermostat();
+        eval { thermostat(); };  # If something dies, keep processing
         sleep 1;
     }
 }
