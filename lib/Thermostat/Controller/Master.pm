@@ -29,6 +29,7 @@ sub show {
 
     # We don't have any breadcrumbs to follow here
     $self->stash(nav => \@BASENAV);
+    $self->stash(base_url => $CONFIG->{'base_url'});
 
     # Get Old set point temperature
     my $old_setpoint = $SETPOINT->get_setpoint();

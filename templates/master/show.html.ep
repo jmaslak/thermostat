@@ -13,6 +13,11 @@
 
   my $heat_class = '';
   if ($heat) { $heat_class = 'text-danger'; }
+
+  $self->stash(
+    meta =>
+      '<meta http-equiv="refresh" content="15; url='.$base_url.'/">'
+  );
 %>
 <div class="container">
   <div class="row">

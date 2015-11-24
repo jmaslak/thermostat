@@ -1,6 +1,7 @@
 % my $nav = $self->stash('nav') // ();  # Navigation Breadcrumbs
 % my $js  = $self->stash('js')  // ();  # Extra .js files
 % my $script = $self->stash('script');
+% my $meta = $self->stash('meta');
 <!DOCTYPE html>
 <html language="en">
   <head>
@@ -20,6 +21,9 @@
 %   foreach my $s (@$script) {
     <script><%== $s %></script>
 %   }
+% }
+% if (defined($meta)) {
+    <%== $meta %>
 % }
   </head>
   <body>
